@@ -1,0 +1,4 @@
+Imie Nazwisko
+Wiek
+A	B
+C
