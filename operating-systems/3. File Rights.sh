@@ -1,4 +1,13 @@
-#!/bin/bash                                                     #Anhelina Belavezha grupa nr 3
+#!/bin/bash                                                     #Anhelina Belavezha
+
+#Input
+#The standard input consists of multiple lines, each representing the output of the ls -l command in its standard format.
+
+#Output
+#For each line of input, print the name of the file or directory along with its numeric permission representation.
+#If the entry is a directory, append a / to its name.
+#If the entry is a regular file and the owner has execute (x) permission, append a * to its name.
+#The output order should match the input order.
 
 read a
 while read linia; do
