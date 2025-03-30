@@ -1,6 +1,16 @@
-//Anhelina Belavezha grupa nr 3
+//Anhelina Belavezha
 #include <unistd.h>  
-#include <fcntl.h>                                               //biblioteka do flagi creat
+#include <fcntl.h>                                               
+
+/*
+Here is the function int podziel(const char *s) in C++ that reads a file specified by the parameter s and splits it into two "halves", 
+saving them into files named fragment1 and fragment2. If the length of the file (in bytes) is even,
+the two fragments will have equal lengths. If the length is odd, the first fragment will be one byte longer than the second. 
+In any case, the concatenation of the two fragments will correspond to the original file. 
+The function returns 0 if successful and -1 if any error occurs. 
+The files fragment1 and fragment2 should be created or cleared if they already exist. 
+The code should use system calls such as open, read, write, etc.; no operations from stdio or iostream libraries are allowed.
+*/
 
 int podziel(const char *file) {
     int input = open(file, O_RDONLY);
@@ -16,7 +26,7 @@ int podziel(const char *file) {
     int bytes = 1;
     int newbyte = 0;
 
-    while(bytes > 0) {                                          //odczyt pliku wejsciowego
+    while(bytes > 0) {                                          
         bytes = read(input, buf, 1);
         size += bytes;
         if(bytes == -1)return -1;
@@ -25,7 +35,7 @@ int podziel(const char *file) {
     close(input);
     input = open(file, O_RDONLY);
 
-    if(size % 2 == 0) {                                         //parzysty rozmiar
+    if(size % 2 == 0) {                                         
         while(newbyte < size) {
             if(size/2 > newbyte) {
                 bytes = read(input, buf, 1);
@@ -44,7 +54,7 @@ int podziel(const char *file) {
                     return -1;
                 write(output2, buf, bytes);
                 newbyte += bytes;}}}
-    else {                                                      //nieparzysty rozmiar
+    else {                                                      
         while(newbyte < size) {
             if(size/2 + 1 <= newbyte) {
                 bytes = read(input, buf, 1);
